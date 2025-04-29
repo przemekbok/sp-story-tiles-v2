@@ -1,0 +1,300 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.contentTileGallery {
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+  overflow-x: hidden; /* Prevent horizontal overflow at the root level */
+  width: 100%; /* Ensure the component takes full width of its container */
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto; /* Center the container */
+  box-sizing: border-box;
+  overflow: hidden; /* Prevent any children from overflowing */
+}
+
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* Prevent content from overflowing */
+  box-sizing: border-box;
+  margin: 0 auto; /* Center the carousel */
+  padding-top: 5px;
+}
+
+.tilesGrid {
+  display: flex;
+  justify-content: center; /* Center tiles for better small screen layout */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  flex-wrap: nowrap; /* Keep layout consistent */
+  box-sizing: border-box;
+  min-width: 0; /* Fix flexbox min-width issue in some browsers */
+}
+
+.gridOne {
+  .tileContainer {
+    margin: 0 auto;
+    max-width: 100%; /* Ensure single tile doesn't overflow */
+  }
+}
+
+.gridTwo, .gridThree, .gridFour {
+  justify-content: space-between; /* Better spacing for responsive layouts */
+  
+  .tileContainer {
+    flex: 0 0 auto;
+    margin: 0 0;
+    /* Adjust width to prevent overflow */
+    max-width: calc(50% - 20px); /* For 2 tiles layout */
+  }
+}
+
+/* Specific adjustments for 3 and 4 tiles */
+.gridThree .tileContainer {
+  max-width: calc(33.33% - 20px); /* For 3 tiles layout */
+}
+
+.gridFour .tileContainer {
+  max-width: calc(25% - 20px); /* For 4 tiles layout */
+}
+
+.tileContainer {
+  width: 280px; /* Default width */
+  max-width: 100%; /* Ensure responsiveness */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 3px 3px -2px hsla(0,0%,59%,.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 320px;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.imageContainer {
+  height: 180px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.contentContainer {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  width: calc(100% - 24px);
+  min-width: 0;
+  overflow: hidden;
+  flex: 1;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #333;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.3;
+}
+
+.description {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 8px 0;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.arrowIcon {
+  font-size: 14px;
+  margin: 5px 10px 5px 0;
+  text-align: right;
+}
+
+.navigationControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%; /* Full width to align properly */
+}
+
+.navButton {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 5px;
+  color: "[theme:link, default:#03787c]";
+  color: var(--link);
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: #f5f5f5;
+  }
+  
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    
+    &:hover {
+      background-color: white;
+    }
+  }
+}
+
+.pageIndicator {
+  margin: 0 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.noItems {
+  text-align: center;
+  padding: 40px 0;
+  color: #666;
+  font-style: italic;
+}
+
+/* Always show navigation controls when there are multiple pages */
+.alwaysShowNavigation {
+  display: flex !important;
+}
+
+/* Modal Styles */
+.modalContainer {
+  width: 800px;
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background: white;
+  overflow: auto;
+  
+  &.dark {
+    background: #333;
+    color: white;
+    
+    .modalSection {
+      border-color: #555;
+    }
+    
+    .modalTitle {
+      color: #fff;
+    }
+  }
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px;
+}
+
+.closeButton {
+  background: transparent;
+  border: none;
+  color: #666;
+  font-size: 16px;
+  cursor: pointer;
+  
+  &:hover {
+    color: #333;
+  }
+}
+
+.modalContent {
+  padding: 0 24px 24px;
+}
+
+.contentHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modalTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.modalImageContainer {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modalImage {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modalSection {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.modalActions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.sectionText {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-line;
+}
