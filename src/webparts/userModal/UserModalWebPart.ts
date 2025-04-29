@@ -80,7 +80,7 @@ export default class UserModalWebPart extends BaseClientSideWebPart<IUserModalWe
     const element: React.ReactElement<IUserModalProps> = React.createElement(
       UserModal,
       {
-        webPartTitle: this.properties.title || 'Subject Matter Experts',
+        webPartTitle: this.properties.title || 'Success Stories',
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
@@ -254,7 +254,7 @@ export default class UserModalWebPart extends BaseClientSideWebPart<IUserModalWe
               groupFields: [
                 PropertyPaneTextField('title', {
                   label: 'Web Part Title',
-                  value: 'Subject Matter Experts'
+                  value: 'Success Stories'
                 }),
                 PropertyPaneDropdown('listName', {
                   label: 'SharePoint List',

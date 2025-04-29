@@ -14,7 +14,7 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
     "group": { "default": "Advanced" },
-    "title": { "default": "Subject Matter Experts" },
+    "title": { "default": "Success Stories" },
     "description": { "default": "Displays user profiles with modal details" },
     "officeFabricIconFontName": "People",
     "properties": {
