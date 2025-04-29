@@ -1,19 +1,17 @@
-# User Modal Web Part for SharePoint
+# Content Gallery Web Part for SharePoint
 
-A modern SharePoint Framework (SPFx) web part that displays team members in a tile-based layout with modal functionality for detailed information.
+A modern SharePoint Framework (SPFx) web part that displays content in a tile-based layout with modal functionality for detailed information.
 
 ## Features
 
-- Displays 1-4 user tiles per view with configurable layout
-- Carousel navigation for browsing through additional users
-- Pulls content dynamically from a SharePoint list with user information
-- Modal window shows detailed user information when a tile is clicked
-- Integrates with SharePoint user profiles to get profile photos and job titles
+- Displays 1-4 content tiles per view with configurable layout
+- Carousel navigation for browsing through additional content items
+- Pulls content dynamically from a SharePoint list with images as attachments
+- Modal window shows detailed content information when a tile is clicked
+- Direct link support for tiles with URLs
 - Responsive design that works across all device sizes
 - Modern UI with shadows, rounded corners, and hover effects
 - Configurable fields for customization
-
-![User Modal Web Part](./assets/user-modal-preview.png)
 
 ## Getting Started
 
@@ -39,27 +37,27 @@ A modern SharePoint Framework (SPFx) web part that displays team members in a ti
 Create a SharePoint list with the following columns:
 
 1. **Title** (Default column)
-   - Used for the list item title, not displayed in the web part
+   - Used for the tile title
 
-2. **User**
-   - Type: Person or Group
-   - Allow multiple selections: No
-   - Show field: User name
-   - This field connects to the SharePoint user profile
-
-3. **Description**
+2. **Description**
    - Type: Multiple lines of text
-   - Used for the user's detailed description in the modal
+   - Used for the content's description in the tile and modal
 
-4. **Certification**
-   - Type: Multiple lines of text
-   - Used to list user certifications in the modal
+3. **Image**
+   - Type: Thumbnail
+   - Used to display an image for the content
+   - Stores images as attachments
+
+4. **LinkUrl**
+   - Type: Single line of text
+   - Optional URL that will open when clicking the tile
+   - If empty, clicking will open the modal instead
 
 ### Creating the List
 
-1. Create a new list in SharePoint (suggested name: "TeamMembers")
+1. Create a new list in SharePoint (suggested name: "ContentLibrary")
 2. Add the columns specified above
-3. Add your team members as list items
+3. Add your content items with images
 4. Configure the web part to use this list
 
 ## Web Part Configuration
@@ -67,7 +65,7 @@ Create a SharePoint list with the following columns:
 In the web part properties pane, you can configure:
 
 - **Web Part Title**: The heading displayed above the tiles
-- **SharePoint List Name**: Name of the list containing your user information
+- **SharePoint List Name**: Name of the list containing your content
 - **Tiles Per View**: Number of tiles to display at once (1-4)
 - **Field Name Settings**: Configure custom field names if they differ from defaults
 
@@ -80,15 +78,14 @@ This web part uses PnP JS (SharePoint Patterns and Practices JavaScript library)
 - Cleaner, more maintainable code for SharePoint operations
 - Improved error handling and fallback mechanisms
 - Better performance through optimized queries
-- Access to SharePoint user profiles for profile photos and job title information
 
-### User Profile Integration
+### Image Handling
 
-The web part implements a multi-layered approach to retrieve user data:
+The web part implements a multi-layered approach to retrieve images:
 
-1. **Basic Information**: Gets user name and email from the SharePoint list
-2. **Profile Enhancement**: Retrieves additional profile information such as job title
-3. **Profile Photo**: Attempts to get the user's profile photo, with fallback to a default image
+1. **Basic Information**: Gets content title and description from the SharePoint list
+2. **Image Retrieval**: Retrieves image attachments from the SharePoint list
+3. **Fallback Image**: Uses a default image if no image is found
 
 ### Modal Implementation
 
